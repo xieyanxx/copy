@@ -8,7 +8,7 @@ const API_MAP = {
 };
 
 export default defineConfig({
-  title: "nexus-coin",
+  title: "Coco coin",
   links: [{ rel: "icon", href: "./logo2.png" }],
   routes: [{ path: "/", component: "index" }, { redirect: "/" }],
   define: {
