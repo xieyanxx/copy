@@ -1,3 +1,4 @@
+import { message } from "antd";
 import axios, { Method } from "axios";
 import { history } from "umi";
 
@@ -15,19 +16,22 @@ export default function request(
       data,
       params,
       headers: {
-        Authorization: localStorage.getItem("token"),
-        lang: localStorage.getItem("lang"),
-        "Content-Type": "application/json",
+        token: localStorage.getItem("token"),
         ...headers,
       },
     })
       .then((response: any) => {
+        if(response.data.code===401){
+          message.error('Please log in again')
+          history.push("/login");
+          return
+        }
         resolve(response.data);
       })
       .catch(async (err: any) => {
-        if (err.response.status === 401) {
-          history.push("/");
-        }
+        // if (err.response.status === 401) {
+        //   history.push("/");
+        // }
         reject(err);
       });
   });

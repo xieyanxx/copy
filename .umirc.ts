@@ -10,7 +10,16 @@ const API_MAP = {
 export default defineConfig({
   title: "Coco coin",
   links: [{ rel: "icon", href: "./logo2.png" }],
-  routes: [{ path: "/", component: "index" }, { redirect: "/" }],
+  routes: [
+    { path: "/", component: "index" },
+    {
+      layout: false,
+      path: '/login',
+      component: '@/pages/login',
+    },
+    { path: "/config", component: "@/pages/textManage" },
+    { redirect: "/login" },
+  ],
   define: {
     BASEURL: base,
     ENV,
