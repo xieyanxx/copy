@@ -17,16 +17,11 @@ type items = {
 };
 export default function HomePage() {
   const [textConfig, setTextConfig] = useState<items[]>([]);
-  const [tasksConfig, setTasksConfig] = useState<items[]>([]);
   const getData = useCallback(() => {
     getConfig().then((res: any) => {
-      const { COPY_WRITING, DAILY_TASKS } = res.data;
-      let textData = COPY_WRITING.filter(
-        (item: items) => item.name == "promotionCopy1"
-      );
-
+      const { COPY_WRITING } = res.data;
+      let textData = COPY_WRITING
       setTextConfig(textData);
-      setTasksConfig(DAILY_TASKS);
       console.log(res);
     });
   }, []);
