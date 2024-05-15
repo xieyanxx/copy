@@ -8,8 +8,8 @@ const API_MAP = {
 };
 
 export default defineConfig({
-  title: "Coco coin",
-  links: [{ rel: "icon", href: "./logo2.png" }],
+  title: "",
+  links: [{ rel: "icon", href: "" }],
   routes: [
     { path: "/", component: "index" },
     {
